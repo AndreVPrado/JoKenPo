@@ -9,6 +9,8 @@ function App() {
   let [vitoria, setVitoria] = useState(0)
   let [derrota, setDerrota] = useState(0)
   let [empate, setEmpate] = useState(0)
+  let [vitoriaPartida, setVitoriaPartida] = useState(0)
+  let [derrotaPartida, setDerrotaPartida] = useState(0)
 
   function jogar() {
 
@@ -68,7 +70,33 @@ function App() {
     
   }
 
+  function reset() {
 
+    if(vitoria > derrota) {
+      alert("Você teve mais vitórias e ganhou!")
+      setVitoriaPartida(vp => vp + 1)
+    }
+
+    else if(vitoria < derrota) {
+      alert("Você teve mais derrotas e perdeu!")
+      setDerrotaPartida(dp => dp + 1)
+    }
+
+    else if(vitoria == 0 && derrota == 0 && empate == 0) {
+      alert("Ao menos jogue uma vez!")
+    }
+
+    else {
+      alert("Você e a máquina empataram!")
+    }
+
+    setVitoria(v => v = 0); 
+    setDerrota(v => v = 0);
+    setEmpate(v => v = 0);
+
+    setOpcaoBot("semEscolha.png")
+    setOpcaoPlayer(3)
+  }
 
 
   return (
@@ -77,6 +105,9 @@ function App() {
         <h1>
           JoKenPo
         </h1>
+        <h2>
+          {vitoriaPartida} X {derrotaPartida}
+        </h2>
         <div className='placar'>
           <p>Vitórias: {vitoria}</p>
           <p>Derrotas: {derrota}</p>
@@ -108,9 +139,14 @@ function App() {
           <h2 className='resultado'>
             {resultado}
           </h2>
+          <div className='divBotoes'>
           <button className='btnJogar' onClick={jogar}>
             Jogar
           </button>
+          <button className='btnResetar' onClick={reset}>
+            Resetar
+          </button>
+          </div>
         </nav>
         <nav>
             <p>

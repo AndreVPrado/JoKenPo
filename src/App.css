@@ -22,7 +22,7 @@
 
 .fazerEscolha{
   display: flex;
-  gap: 1em;
+  justify-content: space-around;
 }
 
 .menuDoGame{
@@ -36,4 +36,18 @@
 
 .imgAdversario{
   width: 7em;
+}
+
+.divBotoes{
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.placar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2vw;
+  border: 1px white;
 }
